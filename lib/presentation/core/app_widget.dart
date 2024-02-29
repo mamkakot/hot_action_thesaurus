@@ -21,7 +21,7 @@ class AppWidget extends StatelessWidget {
 
 class AppThemes {
   static ThemeData main = ThemeData(
-    colorScheme: ColorScheme.fromSeed(seedColor: Colors.redAccent),
+    colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent),
     useMaterial3: true,
   );
 }
