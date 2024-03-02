@@ -12,7 +12,6 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.6
-  freezed: ^2.4.7
   dio: ^5.4.1
   auto_route: ^7.8.4
   freezed_annotation: ^2.4.1
@@ -25,6 +24,11 @@ dependencies:
 
   injectable: ^2.3.2
   get_it: ^7.6.7
+  numberpicker: ^2.1.2
+  json_annotation: ^4.8.1
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
@@ -38,6 +42,8 @@ dev_dependencies:
   riverpod_generator: ^2.3.11
   custom_lint: ^0.6.2
   riverpod_lint: ^2.3.9
+  json_serializable: ^6.7.1
 
 flutter:
   uses-material-design: true
+  generate: true
