@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../application/app_locale/app_locale_provider.dart';
 import '../routes/router.dart';
 
 class AppWidget extends StatelessWidget {
@@ -10,14 +12,22 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'In a hat!',
-      theme: AppThemes.main,
-      debugShowCheckedModeBanner: false,
-      routerDelegate: appRouter.delegate(),
-      routeInformationParser: appRouter.defaultRouteParser(),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
+    return Consumer(
+      builder: (context, ref, child) {
+        final locale = ref.watch(appLocaleProvider);
+        return SafeArea(
+          child: MaterialApp.router(
+            title: 'In a hat!',
+            theme: AppThemes.main,
+            debugShowCheckedModeBanner: false,
+            routerDelegate: appRouter.delegate(),
+            routeInformationParser: appRouter.defaultRouteParser(),
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
+            locale: locale.value,
+          ),
+        );
+      },
     );
   }
 }

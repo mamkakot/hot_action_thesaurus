@@ -11,5 +11,3 @@ void main() {
   configureInjection(Environment.test);
   runApp(ProviderScope(child: AppWidget()));
 }
-
-// TODO добавить локализацию

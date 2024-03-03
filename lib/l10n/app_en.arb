@@ -3,5 +3,10 @@
   "@helloWorld": {
     "description": "The conventional newborn programmer greeting"
   },
-  "playerCount": "Player count"
+  "playerCount": "Player count",
+  "wordsPerPlayer": "Words per player",
+  "goOn": "Continue",
+  "letsGo": "Let's go!",
+  "enterPlayersNames": "Enter players' names",
+  "playerPlaceholder": "Player"
 }

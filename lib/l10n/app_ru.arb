@@ -1,4 +1,9 @@
 {
   "helloWorld": "Пизвдец!",
-  "playerCount": "Количество игроков"
+  "playerCount": "Количество игроков",
+  "wordsPerPlayer": "Количество слов на одного игрока",
+  "goOn": "Продолжить",
+  "letsGo": "В игру!",
+  "enterPlayersNames": "Введите имена игроков",
+  "playerPlaceholder": "Игрок"
 }

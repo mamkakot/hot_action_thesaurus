@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'options.dart';
+part of 'game_options.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,32 +14,37 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-Options _$OptionsFromJson(Map<String, dynamic> json) {
-  return _Options.fromJson(json);
+GameOptions _$GameOptionsFromJson(Map<String, dynamic> json) {
+  return _GameOptions.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Options {
+mixin _$GameOptions {
+  /// Количество игроков
   int get playerCount => throw _privateConstructorUsedError;
+
+  /// Количество слов на одного игрока.
   int get wordsPerPlayer => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $OptionsCopyWith<Options> get copyWith => throw _privateConstructorUsedError;
+  $GameOptionsCopyWith<GameOptions> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OptionsCopyWith<$Res> {
-  factory $OptionsCopyWith(Options value, $Res Function(Options) then) =
-      _$OptionsCopyWithImpl<$Res, Options>;
+abstract class $GameOptionsCopyWith<$Res> {
+  factory $GameOptionsCopyWith(
+          GameOptions value, $Res Function(GameOptions) then) =
+      _$GameOptionsCopyWithImpl<$Res, GameOptions>;
   @useResult
   $Res call({int playerCount, int wordsPerPlayer});
 }
 
 /// @nodoc
-class _$OptionsCopyWithImpl<$Res, $Val extends Options>
-    implements $OptionsCopyWith<$Res> {
-  _$OptionsCopyWithImpl(this._value, this._then);
+class _$GameOptionsCopyWithImpl<$Res, $Val extends GameOptions>
+    implements $GameOptionsCopyWith<$Res> {
+  _$GameOptionsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -66,21 +71,22 @@ class _$OptionsCopyWithImpl<$Res, $Val extends Options>
 }
 
 /// @nodoc
-abstract class _$$OptionsImplCopyWith<$Res> implements $OptionsCopyWith<$Res> {
-  factory _$$OptionsImplCopyWith(
-          _$OptionsImpl value, $Res Function(_$OptionsImpl) then) =
-      __$$OptionsImplCopyWithImpl<$Res>;
+abstract class _$$GameOptionsImplCopyWith<$Res>
+    implements $GameOptionsCopyWith<$Res> {
+  factory _$$GameOptionsImplCopyWith(
+          _$GameOptionsImpl value, $Res Function(_$GameOptionsImpl) then) =
+      __$$GameOptionsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int playerCount, int wordsPerPlayer});
 }
 
 /// @nodoc
-class __$$OptionsImplCopyWithImpl<$Res>
-    extends _$OptionsCopyWithImpl<$Res, _$OptionsImpl>
-    implements _$$OptionsImplCopyWith<$Res> {
-  __$$OptionsImplCopyWithImpl(
-      _$OptionsImpl _value, $Res Function(_$OptionsImpl) _then)
+class __$$GameOptionsImplCopyWithImpl<$Res>
+    extends _$GameOptionsCopyWithImpl<$Res, _$GameOptionsImpl>
+    implements _$$GameOptionsImplCopyWith<$Res> {
+  __$$GameOptionsImplCopyWithImpl(
+      _$GameOptionsImpl _value, $Res Function(_$GameOptionsImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -89,7 +95,7 @@ class __$$OptionsImplCopyWithImpl<$Res>
     Object? playerCount = null,
     Object? wordsPerPlayer = null,
   }) {
-    return _then(_$OptionsImpl(
+    return _then(_$GameOptionsImpl(
       playerCount: null == playerCount
           ? _value.playerCount
           : playerCount // ignore: cast_nullable_to_non_nullable
@@ -105,28 +111,32 @@ class __$$OptionsImplCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$OptionsImpl implements _Options {
-  const _$OptionsImpl(
-      {required this.playerCount, required this.wordsPerPlayer});
+class _$GameOptionsImpl extends _GameOptions {
+  const _$GameOptionsImpl(
+      {required this.playerCount, required this.wordsPerPlayer})
+      : super._();
 
-  factory _$OptionsImpl.fromJson(Map<String, dynamic> json) =>
-      _$$OptionsImplFromJson(json);
+  factory _$GameOptionsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GameOptionsImplFromJson(json);
 
+  /// Количество игроков
   @override
   final int playerCount;
+
+  /// Количество слов на одного игрока.
   @override
   final int wordsPerPlayer;
 
   @override
   String toString() {
-    return 'Options(playerCount: $playerCount, wordsPerPlayer: $wordsPerPlayer)';
+    return 'GameOptions(playerCount: $playerCount, wordsPerPlayer: $wordsPerPlayer)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$OptionsImpl &&
+            other is _$GameOptionsImpl &&
             (identical(other.playerCount, playerCount) ||
                 other.playerCount == playerCount) &&
             (identical(other.wordsPerPlayer, wordsPerPlayer) ||
@@ -140,30 +150,36 @@ class _$OptionsImpl implements _Options {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$OptionsImplCopyWith<_$OptionsImpl> get copyWith =>
-      __$$OptionsImplCopyWithImpl<_$OptionsImpl>(this, _$identity);
+  _$$GameOptionsImplCopyWith<_$GameOptionsImpl> get copyWith =>
+      __$$GameOptionsImplCopyWithImpl<_$GameOptionsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$OptionsImplToJson(
+    return _$$GameOptionsImplToJson(
       this,
     );
   }
 }
 
-abstract class _Options implements Options {
-  const factory _Options(
+abstract class _GameOptions extends GameOptions {
+  const factory _GameOptions(
       {required final int playerCount,
-      required final int wordsPerPlayer}) = _$OptionsImpl;
+      required final int wordsPerPlayer}) = _$GameOptionsImpl;
+  const _GameOptions._() : super._();
 
-  factory _Options.fromJson(Map<String, dynamic> json) = _$OptionsImpl.fromJson;
+  factory _GameOptions.fromJson(Map<String, dynamic> json) =
+      _$GameOptionsImpl.fromJson;
 
   @override
+
+  /// Количество игроков
   int get playerCount;
   @override
+
+  /// Количество слов на одного игрока.
   int get wordsPerPlayer;
   @override
   @JsonKey(ignore: true)
-  _$$OptionsImplCopyWith<_$OptionsImpl> get copyWith =>
+  _$$GameOptionsImplCopyWith<_$GameOptionsImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

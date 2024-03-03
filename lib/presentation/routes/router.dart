@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import '../pages/options_page/options_page.dart';
+import '../pages/game_options_page/game_options_page.dart';
+import '../pages/player_list_page/player_list_page.dart';
 import '../pages/splash_page/splash_page.dart';
 
 part 'router.gr.dart';
@@ -9,6 +10,7 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: SplashRoute.page),
-        AutoRoute(page: OptionsRoute.page, initial: true),
+        AutoRoute(page: GameOptionsRoute.page),
+        AutoRoute(page: PlayerListRoute.page, initial: true),
       ];
 }

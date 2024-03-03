@@ -15,10 +15,16 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    OptionsRoute.name: (routeData) {
+    GameOptionsRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const OptionsPage(),
+        child: const GameOptionsPage(),
+      );
+    },
+    PlayerListRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PlayerListPage(),
       );
     },
     SplashRoute.name: (routeData) {
@@ -31,15 +37,29 @@ abstract class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
-/// [OptionsPage]
-class OptionsRoute extends PageRouteInfo<void> {
-  const OptionsRoute({List<PageRouteInfo>? children})
+/// [GameOptionsPage]
+class GameOptionsRoute extends PageRouteInfo<void> {
+  const GameOptionsRoute({List<PageRouteInfo>? children})
       : super(
-          OptionsRoute.name,
+          GameOptionsRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'OptionsRoute';
+  static const String name = 'GameOptionsRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PlayerListPage]
+class PlayerListRoute extends PageRouteInfo<void> {
+  const PlayerListRoute({List<PageRouteInfo>? children})
+      : super(
+          PlayerListRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PlayerListRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
