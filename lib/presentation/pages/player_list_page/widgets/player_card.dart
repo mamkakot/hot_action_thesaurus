@@ -11,7 +11,7 @@ class PlayerCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.redAccent),
+        border: Border.all(color: Colors.black26),
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: Padding(

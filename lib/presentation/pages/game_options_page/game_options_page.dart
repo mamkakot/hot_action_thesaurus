@@ -8,8 +8,8 @@ import '../../../application/game_options_page/game_options_page_provider.dart';
 
 /// Страница для отображения опций, которые задаются перед началом игры.
 @RoutePage()
-class GameOptionsPage extends ConsumerWidget {
-  const GameOptionsPage({super.key});
+class GameOptionsModelPage extends ConsumerWidget {
+  const GameOptionsModelPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
