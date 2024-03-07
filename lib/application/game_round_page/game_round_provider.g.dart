@@ -6,7 +6,7 @@ part of 'game_round_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$gameRoundPageHash() => r'edbe6a3d9f30cd8b8ad2a12f0ccf79f3b32c544a';
+String _$gameRoundPageHash() => r'afef125732e14b7e91845927abf6c7d1356d188c';
 
 /// See also [GameRoundPage].
 @ProviderFor(GameRoundPage)

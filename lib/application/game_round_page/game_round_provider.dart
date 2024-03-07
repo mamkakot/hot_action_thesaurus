@@ -12,16 +12,20 @@ class GameRoundPage extends _$GameRoundPage {
   }
 
   Future<void> incrementExplainedWordsCount() async {
+    final previousState = await future;
     state = AsyncData(
-      state.value!
-          .copyWith(explainedWordsCount: state.value!.explainedWordsCount + 1),
+      previousState.copyWith(
+        explainedWordsCount: previousState.explainedWordsCount + 1,
+      ),
     );
   }
 
   Future<void> decrementExplainedWordsCount() async {
+    final previousState = await future;
     state = AsyncData(
-      state.value!
-          .copyWith(explainedWordsCount: state.value!.explainedWordsCount - 1),
+      previousState.copyWith(
+        explainedWordsCount: previousState.explainedWordsCount - 1,
+      ),
     );
   }
 }
