@@ -21,7 +21,7 @@ GameOptionsModel _$GameOptionsModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$GameOptionsModel {
   /// Количество игроков
-  int get playerCount => throw _privateConstructorUsedError;
+  List<Player> get players => throw _privateConstructorUsedError;
 
   /// Количество слов на одного игрока.
   int get wordsPerPlayer => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $GameOptionsModelCopyWith<$Res> {
           GameOptionsModel value, $Res Function(GameOptionsModel) then) =
       _$GameOptionsModelCopyWithImpl<$Res, GameOptionsModel>;
   @useResult
-  $Res call({int playerCount, int wordsPerPlayer, Duration roundDuration});
+  $Res call({List<Player> players, int wordsPerPlayer, Duration roundDuration});
 }
 
 /// @nodoc
@@ -57,15 +57,15 @@ class _$GameOptionsModelCopyWithImpl<$Res, $Val extends GameOptionsModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? playerCount = null,
+    Object? players = null,
     Object? wordsPerPlayer = null,
     Object? roundDuration = null,
   }) {
     return _then(_value.copyWith(
-      playerCount: null == playerCount
-          ? _value.playerCount
-          : playerCount // ignore: cast_nullable_to_non_nullable
-              as int,
+      players: null == players
+          ? _value.players
+          : players // ignore: cast_nullable_to_non_nullable
+              as List<Player>,
       wordsPerPlayer: null == wordsPerPlayer
           ? _value.wordsPerPlayer
           : wordsPerPlayer // ignore: cast_nullable_to_non_nullable
@@ -86,7 +86,7 @@ abstract class _$$GameOptionsModelImplCopyWith<$Res>
       __$$GameOptionsModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int playerCount, int wordsPerPlayer, Duration roundDuration});
+  $Res call({List<Player> players, int wordsPerPlayer, Duration roundDuration});
 }
 
 /// @nodoc
@@ -100,15 +100,15 @@ class __$$GameOptionsModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? playerCount = null,
+    Object? players = null,
     Object? wordsPerPlayer = null,
     Object? roundDuration = null,
   }) {
     return _then(_$GameOptionsModelImpl(
-      playerCount: null == playerCount
-          ? _value.playerCount
-          : playerCount // ignore: cast_nullable_to_non_nullable
-              as int,
+      players: null == players
+          ? _value._players
+          : players // ignore: cast_nullable_to_non_nullable
+              as List<Player>,
       wordsPerPlayer: null == wordsPerPlayer
           ? _value.wordsPerPlayer
           : wordsPerPlayer // ignore: cast_nullable_to_non_nullable
@@ -126,17 +126,25 @@ class __$$GameOptionsModelImplCopyWithImpl<$Res>
 @JsonSerializable(fieldRename: FieldRename.snake)
 class _$GameOptionsModelImpl extends _GameOptionsModel {
   const _$GameOptionsModelImpl(
-      {required this.playerCount,
+      {required final List<Player> players,
       required this.wordsPerPlayer,
       required this.roundDuration})
-      : super._();
+      : _players = players,
+        super._();
 
   factory _$GameOptionsModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$GameOptionsModelImplFromJson(json);
 
   /// Количество игроков
+  final List<Player> _players;
+
+  /// Количество игроков
   @override
-  final int playerCount;
+  List<Player> get players {
+    if (_players is EqualUnmodifiableListView) return _players;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_players);
+  }
 
   /// Количество слов на одного игрока.
   @override
@@ -148,7 +156,7 @@ class _$GameOptionsModelImpl extends _GameOptionsModel {
 
   @override
   String toString() {
-    return 'GameOptionsModel(playerCount: $playerCount, wordsPerPlayer: $wordsPerPlayer, roundDuration: $roundDuration)';
+    return 'GameOptionsModel(players: $players, wordsPerPlayer: $wordsPerPlayer, roundDuration: $roundDuration)';
   }
 
   @override
@@ -156,8 +164,7 @@ class _$GameOptionsModelImpl extends _GameOptionsModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GameOptionsModelImpl &&
-            (identical(other.playerCount, playerCount) ||
-                other.playerCount == playerCount) &&
+            const DeepCollectionEquality().equals(other._players, _players) &&
             (identical(other.wordsPerPlayer, wordsPerPlayer) ||
                 other.wordsPerPlayer == wordsPerPlayer) &&
             (identical(other.roundDuration, roundDuration) ||
@@ -166,8 +173,11 @@ class _$GameOptionsModelImpl extends _GameOptionsModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, playerCount, wordsPerPlayer, roundDuration);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_players),
+      wordsPerPlayer,
+      roundDuration);
 
   @JsonKey(ignore: true)
   @override
@@ -186,7 +196,7 @@ class _$GameOptionsModelImpl extends _GameOptionsModel {
 
 abstract class _GameOptionsModel extends GameOptionsModel {
   const factory _GameOptionsModel(
-      {required final int playerCount,
+      {required final List<Player> players,
       required final int wordsPerPlayer,
       required final Duration roundDuration}) = _$GameOptionsModelImpl;
   const _GameOptionsModel._() : super._();
@@ -197,7 +207,7 @@ abstract class _GameOptionsModel extends GameOptionsModel {
   @override
 
   /// Количество игроков
-  int get playerCount;
+  List<Player> get players;
   @override
 
   /// Количество слов на одного игрока.

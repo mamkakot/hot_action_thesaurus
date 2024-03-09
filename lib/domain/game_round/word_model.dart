@@ -26,8 +26,8 @@ class WordModel with _$WordModel {
   factory WordModel.fromJson(Map<String, dynamic> json) =>
       _$WordModelFromJson(json);
 
-  factory WordModel.newWord() => WordModel(
-        word: 'sas',
+  factory WordModel.newWord({required String word}) => WordModel(
+        word: word,
         isExplained: false,
         timeToExplain: null,
         color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt())

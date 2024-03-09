@@ -8,5 +8,6 @@
   "goOn": "Continue",
   "letsGo": "Let's go!",
   "enterPlayersNames": "Enter players' names",
-  "playerPlaceholder": "Player"
+  "playerPlaceholder": "Player",
+  "wordsLeft": "Words in a hat"
 }

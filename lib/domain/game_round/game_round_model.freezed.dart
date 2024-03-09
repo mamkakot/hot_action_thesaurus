@@ -20,14 +20,17 @@ GameRoundModel _$GameRoundModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GameRoundModel {
-  /// Слова, которые загаданы в раунде.
-  List<WordModel> get words => throw _privateConstructorUsedError;
-
   /// Количество слов, которые пользователь смог успешно объяснить.
   int get explainedWordsCount => throw _privateConstructorUsedError;
 
   /// Длительность раунда.
   Duration get roundDuration => throw _privateConstructorUsedError;
+
+  /// Игрок, который объясняет слова.
+  Player get player => throw _privateConstructorUsedError;
+
+  /// Игрок, которому объясняют слова.
+  Player get secondPlayer => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,7 +45,13 @@ abstract class $GameRoundModelCopyWith<$Res> {
       _$GameRoundModelCopyWithImpl<$Res, GameRoundModel>;
   @useResult
   $Res call(
-      {List<WordModel> words, int explainedWordsCount, Duration roundDuration});
+      {int explainedWordsCount,
+      Duration roundDuration,
+      Player player,
+      Player secondPlayer});
+
+  $PlayerCopyWith<$Res> get player;
+  $PlayerCopyWith<$Res> get secondPlayer;
 }
 
 /// @nodoc
@@ -58,15 +67,12 @@ class _$GameRoundModelCopyWithImpl<$Res, $Val extends GameRoundModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? words = null,
     Object? explainedWordsCount = null,
     Object? roundDuration = null,
+    Object? player = null,
+    Object? secondPlayer = null,
   }) {
     return _then(_value.copyWith(
-      words: null == words
-          ? _value.words
-          : words // ignore: cast_nullable_to_non_nullable
-              as List<WordModel>,
       explainedWordsCount: null == explainedWordsCount
           ? _value.explainedWordsCount
           : explainedWordsCount // ignore: cast_nullable_to_non_nullable
@@ -75,7 +81,31 @@ class _$GameRoundModelCopyWithImpl<$Res, $Val extends GameRoundModel>
           ? _value.roundDuration
           : roundDuration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      player: null == player
+          ? _value.player
+          : player // ignore: cast_nullable_to_non_nullable
+              as Player,
+      secondPlayer: null == secondPlayer
+          ? _value.secondPlayer
+          : secondPlayer // ignore: cast_nullable_to_non_nullable
+              as Player,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PlayerCopyWith<$Res> get player {
+    return $PlayerCopyWith<$Res>(_value.player, (value) {
+      return _then(_value.copyWith(player: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PlayerCopyWith<$Res> get secondPlayer {
+    return $PlayerCopyWith<$Res>(_value.secondPlayer, (value) {
+      return _then(_value.copyWith(secondPlayer: value) as $Val);
+    });
   }
 }
 
@@ -88,7 +118,15 @@ abstract class _$$GameRoundModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<WordModel> words, int explainedWordsCount, Duration roundDuration});
+      {int explainedWordsCount,
+      Duration roundDuration,
+      Player player,
+      Player secondPlayer});
+
+  @override
+  $PlayerCopyWith<$Res> get player;
+  @override
+  $PlayerCopyWith<$Res> get secondPlayer;
 }
 
 /// @nodoc
@@ -102,15 +140,12 @@ class __$$GameRoundModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? words = null,
     Object? explainedWordsCount = null,
     Object? roundDuration = null,
+    Object? player = null,
+    Object? secondPlayer = null,
   }) {
     return _then(_$GameRoundModelImpl(
-      words: null == words
-          ? _value._words
-          : words // ignore: cast_nullable_to_non_nullable
-              as List<WordModel>,
       explainedWordsCount: null == explainedWordsCount
           ? _value.explainedWordsCount
           : explainedWordsCount // ignore: cast_nullable_to_non_nullable
@@ -119,6 +154,14 @@ class __$$GameRoundModelImplCopyWithImpl<$Res>
           ? _value.roundDuration
           : roundDuration // ignore: cast_nullable_to_non_nullable
               as Duration,
+      player: null == player
+          ? _value.player
+          : player // ignore: cast_nullable_to_non_nullable
+              as Player,
+      secondPlayer: null == secondPlayer
+          ? _value.secondPlayer
+          : secondPlayer // ignore: cast_nullable_to_non_nullable
+              as Player,
     ));
   }
 }
@@ -127,36 +170,34 @@ class __$$GameRoundModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GameRoundModelImpl implements _GameRoundModel {
   const _$GameRoundModelImpl(
-      {required final List<WordModel> words,
-      required this.explainedWordsCount,
-      required this.roundDuration})
-      : _words = words;
+      {this.explainedWordsCount = 0,
+      required this.roundDuration,
+      required this.player,
+      required this.secondPlayer});
 
   factory _$GameRoundModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$GameRoundModelImplFromJson(json);
 
-  /// Слова, которые загаданы в раунде.
-  final List<WordModel> _words;
-
-  /// Слова, которые загаданы в раунде.
-  @override
-  List<WordModel> get words {
-    if (_words is EqualUnmodifiableListView) return _words;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_words);
-  }
-
   /// Количество слов, которые пользователь смог успешно объяснить.
   @override
+  @JsonKey()
   final int explainedWordsCount;
 
   /// Длительность раунда.
   @override
   final Duration roundDuration;
 
+  /// Игрок, который объясняет слова.
+  @override
+  final Player player;
+
+  /// Игрок, которому объясняют слова.
+  @override
+  final Player secondPlayer;
+
   @override
   String toString() {
-    return 'GameRoundModel(words: $words, explainedWordsCount: $explainedWordsCount, roundDuration: $roundDuration)';
+    return 'GameRoundModel(explainedWordsCount: $explainedWordsCount, roundDuration: $roundDuration, player: $player, secondPlayer: $secondPlayer)';
   }
 
   @override
@@ -164,20 +205,19 @@ class _$GameRoundModelImpl implements _GameRoundModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$GameRoundModelImpl &&
-            const DeepCollectionEquality().equals(other._words, _words) &&
             (identical(other.explainedWordsCount, explainedWordsCount) ||
                 other.explainedWordsCount == explainedWordsCount) &&
             (identical(other.roundDuration, roundDuration) ||
-                other.roundDuration == roundDuration));
+                other.roundDuration == roundDuration) &&
+            (identical(other.player, player) || other.player == player) &&
+            (identical(other.secondPlayer, secondPlayer) ||
+                other.secondPlayer == secondPlayer));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_words),
-      explainedWordsCount,
-      roundDuration);
+      runtimeType, explainedWordsCount, roundDuration, player, secondPlayer);
 
   @JsonKey(ignore: true)
   @override
@@ -196,17 +236,14 @@ class _$GameRoundModelImpl implements _GameRoundModel {
 
 abstract class _GameRoundModel implements GameRoundModel {
   const factory _GameRoundModel(
-      {required final List<WordModel> words,
-      required final int explainedWordsCount,
-      required final Duration roundDuration}) = _$GameRoundModelImpl;
+      {final int explainedWordsCount,
+      required final Duration roundDuration,
+      required final Player player,
+      required final Player secondPlayer}) = _$GameRoundModelImpl;
 
   factory _GameRoundModel.fromJson(Map<String, dynamic> json) =
       _$GameRoundModelImpl.fromJson;
 
-  @override
-
-  /// Слова, которые загаданы в раунде.
-  List<WordModel> get words;
   @override
 
   /// Количество слов, которые пользователь смог успешно объяснить.
@@ -215,6 +252,14 @@ abstract class _GameRoundModel implements GameRoundModel {
 
   /// Длительность раунда.
   Duration get roundDuration;
+  @override
+
+  /// Игрок, который объясняет слова.
+  Player get player;
+  @override
+
+  /// Игрок, которому объясняют слова.
+  Player get secondPlayer;
   @override
   @JsonKey(ignore: true)
   _$$GameRoundModelImplCopyWith<_$GameRoundModelImpl> get copyWith =>

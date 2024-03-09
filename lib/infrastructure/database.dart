@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'dart:math';
 
+import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
@@ -12,27 +14,48 @@ class WordsDatabase {
 
   @PostConstruct(preResolve: true)
   Future<void> init() async {
-    database = await openDatabase(
-      join(await getDatabasesPath(), 'words_database.db'),
-      onCreate: (db, version) {
-        return db.execute(
-          'CREATE TABLE words(id INTEGER PRIMARY KEY, word TEXT)',
-        );
-      },
-      version: 1,
-    );
+    var databasesPath = await getDatabasesPath();
+    var path = join(databasesPath, 'demo_asset_example.db');
+
+    // Check if the database exists
+    var exists = await databaseExists(path);
+
+    if (!exists) {
+      // Should happen only the first time you launch your application
+      print('Creating new copy from asset');
+
+      // Make sure the parent directory exists
+      try {
+        await Directory(dirname(path)).create(recursive: true);
+      } catch (_) {}
+
+      // Copy from asset
+      ByteData data = await rootBundle.load(
+        url.join(
+          'assets',
+          'russian_nouns.db',
+        ),
+      );
+      List<int> bytes =
+          data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+
+      // Write and flush the bytes written
+      await File(path).writeAsBytes(bytes, flush: true);
+    } else {
+      print('Opening existing database');
+    }
+
+    // open the database
+    database = await openDatabase(path, readOnly: true);
   }
 
   /// Получение случайных слов из базы данных в заданном количестве.
   ///
-  /// [count]
+  /// [count] -- количество слов в выборке.
   Future<List<WordModel>> getRandomWords(int count) async {
-    // Get a reference to the database.
-    final db = await database;
-
     final randomSeed = Random();
     const min = 0;
-    const max = 100;
+    final max = await getCount(tableName: 'words');
 
     final randomIds =
         List<int>.generate(count, (int index) => min + randomSeed.nextInt(max));
@@ -40,7 +63,7 @@ class WordsDatabase {
 
     // Query the table for all the dogs.
     final List<Map<String, Object?>> wordMaps =
-        await db.query('words', where: 'id IN (${randomIds.join(",")})');
+        await database.query('words', where: 'id IN (${randomIds.join(",")})');
 
     // Convert the list of each dog's fields into a list of `Dog` objects.
     return [
@@ -48,7 +71,13 @@ class WordsDatabase {
             'id': _ as int,
             'word': word as String,
           } in wordMaps)
-        WordModel(word: word, isExplained: false),
+        WordModel.newWord(word: word),
     ];
   }
+
+  Future<int> getCount({required String tableName}) async =>
+      Sqflite.firstIntValue(
+        await database.query(tableName, columns: ['COUNT(*)']),
+      ) ??
+      0;
 }

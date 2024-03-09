@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../application/game_options_page/game_options_page_provider.dart';
+import '../../../application/game_options/game_options_provider.dart';
 
 import '../../routes/router.dart';
 import 'widgets/player_card.dart';
@@ -14,7 +14,7 @@ class PlayerListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final options = ref.watch(gameOptionsPageProvider);
+    final options = ref.watch(gameOptionsProvider);
     final localizations = AppLocalizations.of(context)!;
     return Scaffold(
       body: switch (options) {
@@ -31,11 +31,11 @@ class PlayerListPage extends ConsumerWidget {
                 ),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: value.playerCount + 1,
+                    itemCount: value.players.length + 1,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 16.0),
-                        child: index != value.playerCount
+                        child: index != value.players.length
                             ? PlayerCard(playerNumber: index + 1)
                             : ElevatedButton(
                                 onPressed: () {

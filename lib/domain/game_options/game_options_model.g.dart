@@ -9,7 +9,9 @@ part of 'game_options_model.dart';
 _$GameOptionsModelImpl _$$GameOptionsModelImplFromJson(
         Map<String, dynamic> json) =>
     _$GameOptionsModelImpl(
-      playerCount: json['player_count'] as int,
+      players: (json['players'] as List<dynamic>)
+          .map((e) => Player.fromJson(e as Map<String, dynamic>))
+          .toList(),
       wordsPerPlayer: json['words_per_player'] as int,
       roundDuration: Duration(microseconds: json['round_duration'] as int),
     );
@@ -17,7 +19,7 @@ _$GameOptionsModelImpl _$$GameOptionsModelImplFromJson(
 Map<String, dynamic> _$$GameOptionsModelImplToJson(
         _$GameOptionsModelImpl instance) =>
     <String, dynamic>{
-      'player_count': instance.playerCount,
+      'players': instance.players,
       'words_per_player': instance.wordsPerPlayer,
       'round_duration': instance.roundDuration.inMicroseconds,
     };

@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../player/player.dart';
+
 part 'game_options_model.freezed.dart';
 
 part 'game_options_model.g.dart';
@@ -12,7 +14,7 @@ class GameOptionsModel with _$GameOptionsModel {
   @JsonSerializable(fieldRename: FieldRename.snake)
   const factory GameOptionsModel({
     /// Количество игроков
-    required int playerCount,
+    required List<Player> players,
 
     /// Количество слов на одного игрока.
     required int wordsPerPlayer,
@@ -22,7 +24,7 @@ class GameOptionsModel with _$GameOptionsModel {
   }) = _GameOptionsModel;
 
   factory GameOptionsModel.defaultOptions() => const GameOptionsModel(
-        playerCount: 5,
+        players: [Player(), Player()],
         wordsPerPlayer: 30,
         roundDuration: Duration(minutes: 1),
       );
@@ -31,7 +33,7 @@ class GameOptionsModel with _$GameOptionsModel {
       _$GameOptionsModelFromJson(json);
 
   /// Итоговое количество слов "в шляпе".
-  int get wordCount => playerCount * wordsPerPlayer;
+  int get wordCount => players.length * wordsPerPlayer;
 
   /// Минимальное количество игроков.
   int get minPlayerCount => 2;
