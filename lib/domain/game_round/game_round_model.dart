@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../player/player.dart';
-import 'word_model.dart';
 
 part 'game_round_model.freezed.dart';
 

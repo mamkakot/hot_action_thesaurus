@@ -9,7 +9,7 @@ part 'game_provider.g.dart';
 @riverpod
 class Game extends _$Game {
   @override
-  Future<GameModel> build({required int wordCount}) async {
+  Future<GameModel> build() async {
     final randomWords = await getIt<WordsDatabase>().getRandomWords(5);
     return GameModel(words: randomWords);
   }

@@ -8,11 +8,11 @@ part 'game_round_provider.g.dart';
 @riverpod
 class GameRound extends _$GameRound {
   @override
-  Future<GameRoundModel> build(Player player, Player secondPlayer) async {
-    return GameRoundModel(
-      roundDuration: const Duration(minutes: 1),
-      player: player,
-      secondPlayer: secondPlayer,
+  Future<GameRoundModel> build() async {
+    return const GameRoundModel(
+      roundDuration: Duration(minutes: 1),
+      player: Player(),
+      secondPlayer: Player(),
     );
   }
 

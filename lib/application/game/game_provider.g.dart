@@ -1,25 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'game_round_provider.dart';
+part of 'game_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$gameRoundHash() => r'0c0d2c72056d1f4ca26befd4fe1998bbbcd85196';
+String _$gameHash() => r'15db8e498a752b4283de3434097b48a2cb40264d';
 
-/// See also [GameRound].
-@ProviderFor(GameRound)
-final gameRoundProvider =
-    AutoDisposeAsyncNotifierProvider<GameRound, GameRoundModel>.internal(
-  GameRound.new,
-  name: r'gameRoundProvider',
+/// See also [Game].
+@ProviderFor(Game)
+final gameProvider = AutoDisposeAsyncNotifierProvider<Game, GameModel>.internal(
+  Game.new,
+  name: r'gameProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$gameRoundHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$gameHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$GameRound = AutoDisposeAsyncNotifier<GameRoundModel>;
+typedef _$Game = AutoDisposeAsyncNotifier<GameModel>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

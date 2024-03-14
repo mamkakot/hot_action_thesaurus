@@ -29,26 +29,26 @@ class PlayerListPage extends ConsumerWidget {
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
-                Expanded(
+                Flexible(
                   child: ListView.builder(
-                    itemCount: value.players.length + 1,
+                    itemCount: value.players.length,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 16.0),
-                        child: index != value.players.length
-                            ? PlayerCard(playerNumber: index + 1)
-                            : ElevatedButton(
-                                onPressed: () {
-                                  context.router.push(const GameRoundRoute());
-                                },
-                                child: Text(
-                                  localizations.letsGo,
-                                  style:
-                                      Theme.of(context).textTheme.titleMedium,
-                                ),
-                              ),
+                        child: PlayerCard(playerNumber: index + 1),
                       );
                     },
+                  ),
+                ),
+                Flexible(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      context.router.push(const GameRoundRoute());
+                    },
+                    child: Text(
+                      localizations.letsGo,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
                   ),
                 ),
               ],
