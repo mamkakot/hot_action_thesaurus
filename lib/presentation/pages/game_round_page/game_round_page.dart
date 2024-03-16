@@ -1,5 +1,4 @@
 import 'package:auto_route/annotations.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
@@ -7,6 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../application/game/game_provider.dart';
 import '../../../application/game_round/game_round_provider.dart';
+import '../../core/utils.dart';
 
 @RoutePage()
 class GameRoundPage extends ConsumerWidget {
@@ -34,6 +34,7 @@ class GameRoundPage extends ConsumerWidget {
                   child: CardSwiper(
                     cardsCount: game.value!.words.length,
                     isLoop: false,
+                    // TODO добавить удаление смахиванием вниз
                     allowedSwipeDirection:
                         const AllowedSwipeDirection.only(up: true),
                     onSwipe: (previousIndex, currentIndex, direction) {
@@ -58,7 +59,15 @@ class GameRoundPage extends ConsumerWidget {
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                         alignment: Alignment.center,
-                        child: Text(game.value!.words[index].word),
+                        child: Text(
+                          game.value!.words[index].word,
+                          style: TextStyle(
+                            fontSize: 24.0,
+                            color: getFontColorForBackground(
+                              game.value!.words[index].color ?? Colors.grey,
+                            ),
+                          ),
+                        ),
                       );
                     },
                   ),
