@@ -5,7 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../application/game_options/game_options_provider.dart';
 
-import '../../routes/router.dart';
+import '../../router/router.dart';
 import 'widgets/player_card.dart';
 
 @RoutePage()

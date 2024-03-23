@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../application/app_locale/app_locale_provider.dart';
-import '../routes/router.dart';
+import '../router/router.dart';
 
 class AppWidget extends StatelessWidget {
   final appRouter = AppRouter();
